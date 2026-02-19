@@ -10,8 +10,18 @@ if not is_mobile:
 
 setup(
     name="d4x-turbo",
-    version="1.3",
+    version="1.5", # Version hamesha increment karein
     packages=find_packages(),
     install_requires=reqs,
-    # Baaki info...
+    author="D4X", # Apna asli naam ya username likhein
+    description="Ultra fast bot engine booster for Python bots",
+    long_description="D4X-TURBO optimizes your bot using ujson and advanced memory management for both Termux and VPS.",
+    long_description_content_type="text/markdown",
+    url="https://github.com/aapka-username/d4x-turbo", # Apni repo ka link
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.7',
 )
