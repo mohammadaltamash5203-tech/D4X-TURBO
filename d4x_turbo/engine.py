@@ -1,21 +1,33 @@
 import asyncio
 import sys
-import ujson
+import gc
 
 class D4X_Engine:
     def boost(self):
-        # Ye bot ke dimaag (Event Loop) ki speed badhata hai
         try:
-            if sys.platform != "win32":
-                import uvloop
-                asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
-                return "🚀 D4X-TURBO: Linux Engine Optimized!"
-            return "🚀 D4X-TURBO: Windows Engine Optimized!"
-        except:
-            return "⚠️ Speed normal hai, uvloop install karein."
+            # 1. VPS Optimization (uvloop)
+            if "android" not in sys.platform.lower():
+                try:
+                    import uvloop
+                    asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+                    return "🚀 [D4X-TURBO] Extreme VPS Mode: UVLOOP Activated!"
+                except ImportError:
+                    pass
 
-    def fast_data(self, data):
-        # Normal json se 5-10 guna fast
-        return ujson.loads(data)
+            # 2. Termux Optimization (The Secret Sauce)
+            # Hum Garbage Collection ko optimize karte hain speed ke liye
+            gc.collect()
+            gc.freeze() # Objects ko memory mein lock karta hai fast access ke liye
+            
+            # Default loop ki limits badhana
+            loop = asyncio.get_event_loop()
+            if hasattr(loop, 'set_debug'):
+                loop.set_debug(False) # Debugging off = Fast speed
+            
+            return "⚡ [D4X-TURBO] Termux Turbo Mode: Custom Loop & Memory Optimized!"
+            
+        except Exception as e:
+            return f"⚠️ [D4X-TURBO] Error: {e}"
 
 d4x = D4X_Engine()
+            
