@@ -10,7 +10,7 @@ if not is_mobile:
 
 setup(
     name="d4x-turbo",
-    version="1.5", # Version hamesha increment karein
+    version="2.1", # Version hamesha increment karein
     packages=find_packages(),
     install_requires=reqs,
     author="D4X", # Apna asli naam ya username likhein
